@@ -1,7 +1,7 @@
 var jenkins = jenkins || {};
 jenkins.conf = function () {
-  var default_url = "http://ci.jenkins-ci.org/",
-      default_pollIntervall = 10;
+  var default_url = "http://ci.jenkins-ci.org/";
+  var default_pollIntervall = 10;
 
   function setPollIntervall(minutes) {
     var pollIntervall = parseInt(minutes, 10);

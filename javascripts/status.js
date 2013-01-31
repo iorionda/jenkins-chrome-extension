@@ -3,8 +3,8 @@ var jenkins = jenkins || {};
 jenkins.status = function(conf) {
 
   function showUrl(evt) {
-    var url = evt.currentTarget.href,
-    jenkins = chrome.extension.getBackgroundPage().jenkins;
+    var url = evt.currentTarget.href;
+    var jenkins = chrome.extension.getBackgroundPage().jenkins;
     jenkins.open(url);
     window.close();
   }
@@ -13,11 +13,11 @@ jenkins.status = function(conf) {
     if (name === undefined) {
       name = url;
     }
-    var link = document.createElement('a');
-    link.innerText = name;
-    link.href = url;
-    link.addEventListener("click", showUrl);
-    return link;
+    var ln = document.createElement('a');
+    ln.innerText = name;
+    ln.href = url;
+    ln.addEventListener("click", showUrl);
+    return ln;
   }
 
   function asIcon(result) {

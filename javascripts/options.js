@@ -1,5 +1,9 @@
 jenkins.options = function(conf) {
-  var jenkinsUrlTextbox, pollIntervallTextbox, saveButton, saveStatus, iconSize;
+  var jenkinsUrlTextbox;
+  var pollIntervallTextbox;
+  var saveButton;
+  var saveStatus;
+  var iconSize;
 
   function showSaveStatus(show) {
     saveStatus.style.display = show ? '' : "none";
