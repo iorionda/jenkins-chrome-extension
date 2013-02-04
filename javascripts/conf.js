@@ -12,7 +12,7 @@ jenkins.conf = function () {
 
   function setJenkinsURL(url) {
     var slash = '/';
-    if (slash !== url.substr( url.length  - slash.length, slash.length ) ) {
+    if (slash !== url.substr( url.length - slash.length, slash.length ) ) {
       url = url + slash;
     }
     localStorage.jenkinsUrl = url;
