@@ -16,10 +16,6 @@ jenkins.options = function(conf) {
     document.getElementById(conf.iconSize()).checked = true;
     document.getElementById(conf.successColor()).checked = true;
     saveButton.disabled = true;
-    var checks = document.getElementById('checks');
-    checks.innerHTML = "";
-    var checkedArray = conf.ignoreList().split(",");
-    checks.appendChild(getListOfJobs(checkedArray));
   }
 
   function getIconSize() {
@@ -42,12 +38,14 @@ jenkins.options = function(conf) {
 
   return {
     save : function () {
+      alert("save");
       conf.set({
         jenkinsURL : jenkinsUrlTextbox.value,
         pollIntervall: pollIntervallTextbox.value,
         iconSize: getIconSize(),
         successColor: getSuccessColor()
       });
+
       showSaveStatus(true);
       display();
       chrome.extension.getBackgroundPage().jenkins.init();
@@ -58,11 +56,24 @@ jenkins.options = function(conf) {
     },
 
     init : function () {
+      alert("init");
       jenkinsUrlTextbox = document.getElementById("jenkins-url");
       pollIntervallTextbox = document.getElementById("poll-intervall");
       saveButton = document.getElementById("save-button");
       saveStatus = document.getElementById("save-status");
+
       display();
     }
   };
 }(jenkins.conf);
+
+document.querySelector('body').addEventListener('load', jenkins.options.init());
+document.getElementById('save-button').addEventListener('click', jenkins.options.save());
+document.getElementById('cancel-button').addEventListener('click', jenkins.options.init());
+document.getElementById('jenkins-url').addEventListener('input', jenkins.options.markDirty());
+document.getElementById('poll-intervall').addEventListener('input', jenkins.options.markDirty());
+document.getElementById('small').addEventListener('change', jenkins.options.markDirty());
+document.getElementById('medium').addEventListener('change', jenkins.options.markDirty());
+document.getElementById('large').addEventListener('change', jenkins.options.markDirty());
+document.getElementById('blue').addEventListener('change', jenkins.options.markDirty());
+document.getElementById('green').addEventListener('change', jenkins.options.markDirty());

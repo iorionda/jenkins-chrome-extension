@@ -24,8 +24,6 @@ jenkins.open = function() {
 }();
 
 jenkins.init = function (conf, results) {
-  var xhr = undefined,
-  timeoutId = undefined,
   successColors = /(blue|grey|disabled)/,
   build = {
     ok :   {    msg : "OK",     color : [0, 128, 0, 255] },
@@ -110,3 +108,8 @@ jenkins.init = function (conf, results) {
   };
 
 }(jenkins.conf, jenkins.results);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('body').addEventListener('load', jenkins.init());
+});
