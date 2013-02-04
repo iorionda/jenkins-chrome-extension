@@ -52,11 +52,11 @@ jenkins.options = function(conf) {
     },
 
     markDirty : function () {
+      alert('markDirty');
       showSaveStatus(false);
     },
 
     init : function () {
-      alert("init");
       jenkinsUrlTextbox = document.getElementById("jenkins-url");
       pollIntervallTextbox = document.getElementById("poll-intervall");
       saveButton = document.getElementById("save-button");
@@ -67,13 +67,17 @@ jenkins.options = function(conf) {
   };
 }(jenkins.conf);
 
-document.querySelector('body').addEventListener('load', jenkins.options.init());
-document.getElementById('save-button').addEventListener('click', jenkins.options.save());
-document.getElementById('cancel-button').addEventListener('click', jenkins.options.init());
-document.getElementById('jenkins-url').addEventListener('input', jenkins.options.markDirty());
-document.getElementById('poll-intervall').addEventListener('input', jenkins.options.markDirty());
-document.getElementById('small').addEventListener('change', jenkins.options.markDirty());
-document.getElementById('medium').addEventListener('change', jenkins.options.markDirty());
-document.getElementById('large').addEventListener('change', jenkins.options.markDirty());
-document.getElementById('blue').addEventListener('change', jenkins.options.markDirty());
-document.getElementById('green').addEventListener('change', jenkins.options.markDirty());
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('body').addEventListener('load', jenkins.options.init(), false);
+  // document.getElementById('save-button').addEventListener('click', jenkins.options.save(), false);
+  // document.getElementById('cancel-button').addEventListener('click', jenkins.options.init(), false);
+  // document.getElementById('jenkins-url').addEventListener('input', jenkins.options.markDirty(), false);
+  // document.getElementById('poll-intervall').addEventListener('input', jenkins.options.markDirty(), false);
+  // document.getElementById('small').addEventListener('change', jenkins.options.markDirty(), false);
+  // document.getElementById('medium').addEventListener('click', jenkins.options.markDirty(), false);
+  // document.getElementById('large').addEventListener('click', jenkins.options.markDirty(), false);
+  // document.getElementById('blue').addEventListener('click', jenkins.options.markDirty(), false);
+  // document.getElementById('green').addEventListener('click', jenkins.options.markDirty(), false);
+}, false);
+
+
